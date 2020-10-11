@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string-array name="SAE_Denoms">
+        <item>"4"</item>
+        <item>"8"</item>
+        <item>"16"</item>
+        <item>"32"</item>
+        <item>"64"</item>
+        <item>"128"</item>
+    </string-array>
+</resources>

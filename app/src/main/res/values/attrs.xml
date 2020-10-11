@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <declare-styleable name="FractionView">
+        <attr name="numerator" format="integer" />
+        <attr name="denominator" format="integer" />
+        <attr name="textSize" format="dimension" />
+        <attr name="mixed_fractions" format="boolean" />
+    </declare-styleable>
+
+</resources>

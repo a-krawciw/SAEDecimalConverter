@@ -9,11 +9,12 @@ public class FractionValue {
     private final int denominator;
     private final Units units;
     private final int numerator;
-
+    private final int largestDenominator;
 
 
     public FractionValue(double value, int maxDenominator, Units units){
         this.value = value;
+        this.largestDenominator = maxDenominator;
         int numerator = (int)Math.round(value*maxDenominator);
 
         int max_div = max_divisor(numerator, maxDenominator);
@@ -29,7 +30,7 @@ public class FractionValue {
     }
 
     public FractionValue toUnit(Units newUnit){
-        return new FractionValue(this.units.convertToUnit(newUnit, value), denominator, newUnit);
+        return new FractionValue(this.units.convertToUnit(newUnit, value), largestDenominator, newUnit);
     }
 
     public FractionValue withMaxDenominator(int newMax){

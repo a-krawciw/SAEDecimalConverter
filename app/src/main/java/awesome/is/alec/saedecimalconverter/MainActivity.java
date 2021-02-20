@@ -20,6 +20,7 @@ import awesome.is.alec.saedecimalconverter.model.Units;
 public class MainActivity extends AppCompatActivity {
 
     private ResponsiveNumberText decimalInput;
+    private ResponsiveNumberText metricInput;
     private FractionView fractionView;
     private Spinner denomSpinner;
     private Checkable checkable;
@@ -35,14 +36,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         decimalInput = findViewById(R.id.decimalNumber);
+        metricInput = findViewById(R.id.millimeterDecimal);
         fractionView = findViewById(R.id.fraction);
         denomSpinner = findViewById(R.id.spinner);
         checkable = findViewById(R.id.checkBox);
 
-        decimalInput.registerKeyListener(new KeyListener(decimalInput, Units.INCH));
+        decimalInput.registerKeyListener(new KeyListener(decimalInput));
+        metricInput.registerKeyListener(new KeyListener(metricInput));
 
         fractionStore.registerListener(decimalInput);
         fractionStore.registerListener(fractionView);
+        fractionStore.registerListener(metricInput);
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -70,17 +74,15 @@ public class MainActivity extends AppCompatActivity {
 
     private class KeyListener implements KeyEvent.Callback{
 
-        private EditText textView;
-        private Units textViewUnits;
+        private ResponsiveNumberText textView;
 
-        public KeyListener(EditText watching, Units textViewUnits){
+        public KeyListener(ResponsiveNumberText watching){
             textView = watching;
-            this.textViewUnits = textViewUnits;
         }
 
         @Override
         public boolean onKeyDown(int keyCode, KeyEvent event) {
-            return false;
+            return onKeyUp(keyCode, event);
         }
 
         @Override
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onKeyUp(int keyCode, KeyEvent event) {
             try{
                 double value = Double.parseDouble(String.valueOf(textView.getText()));
-                fractionStore.setActiveValue(new FractionValue(value, largestDenominator, textViewUnits));
+                fractionStore.setActiveValue(new FractionValue(value, largestDenominator, textView.getUnits()));
             } catch (NumberFormatException e){
                 //Ignore
             }

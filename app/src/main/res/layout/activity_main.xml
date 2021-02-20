@@ -29,32 +29,31 @@
         android:id="@+id/decimalNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="565dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
+        android:focusableInTouchMode="true"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:unit="INCH"/>
+        app:unit="INCH" />
 
     <awesome.is.alec.saedecimalconverter.FractionView
         android:id="@+id/fraction"
         android:layout_width="142dp"
         android:layout_height="224dp"
-        android:layout_marginTop="162dp"
-        android:layout_marginBottom="384dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="200dp"
         android:paddingTop="135dp"
         android:paddingBottom="5dp"
         app:denominator="128"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.539"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/decimalNumber"
-        app:layout_constraintVertical_bias="0.113"
+        app:layout_constraintVertical_bias="0.0"
         app:mixed_fractions="false"
         app:numerator="0"
         app:textSize="24sp" />
@@ -73,7 +72,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="80dp"
         android:layout_marginBottom="16dp"
         android:text="Enter the max precision of denominator"
         app:layout_constraintBottom_toTopOf="@+id/spinner"
@@ -93,5 +92,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginBottom="23dp"
+        android:text="Inches"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/decimalNumber"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.153" />
+
+    <awesome.is.alec.saedecimalconverter.ResponsiveNumberText
+        android:id="@+id/millimeterDecimal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="27dp"
+        android:ems="10"
+        android:focusableInTouchMode="true"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/decimalNumber"
+        app:unit="MILLIMETER" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="44dp"
+        android:text="mm"
+        app:layout_constraintBottom_toBottomOf="@+id/millimeterDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/millimeterDecimal"
+        app:layout_constraintTop_toBottomOf="@+id/decimalNumber" />
 
 </android.support.constraint.ConstraintLayout>

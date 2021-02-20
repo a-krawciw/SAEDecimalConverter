@@ -54,9 +54,22 @@ public class ResponsiveNumberText extends android.support.v7.widget.AppCompatEdi
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (passEventTo != null){
+            passEventTo.onKeyDown(keyCode, event);
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
     public void valueChanged(FractionValue newValue) {
-        if (!hasFocus())
+        if (!hasFocus()) {
             setText(""+newValue.toUnit(fieldUnit).getValue());
+        }
+    }
+
+    public Units getUnits(){
+        return fieldUnit;
     }
 
 

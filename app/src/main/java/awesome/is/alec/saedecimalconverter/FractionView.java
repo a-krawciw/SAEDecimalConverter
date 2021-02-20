@@ -9,7 +9,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class FractionView extends View {
+import awesome.is.alec.saedecimalconverter.model.FractionValue;
+import awesome.is.alec.saedecimalconverter.model.Units;
+import awesome.is.alec.saedecimalconverter.model.ValueListener;
+
+public class FractionView extends View implements ValueListener {
 
     private int aNumerator = 0;
     private int aDenominator = 1;
@@ -109,18 +113,8 @@ public class FractionView extends View {
         return aNumerator;
     }
 
-    public void setNumerator(int aNumerator) {
-        this.aNumerator = aNumerator;
-        invalidate();
-    }
-
     public int getDenominator() {
         return aDenominator;
-    }
-
-    public void setDenominator(int aDenominator) {
-        this.aDenominator = aDenominator;
-        invalidate();
     }
 
     public void useMixedFractions(){
@@ -134,6 +128,11 @@ public class FractionView extends View {
     }
 
 
-
-
+    @Override
+    public void valueChanged(FractionValue newValue) {
+        newValue = newValue.toUnit(Units.INCH);
+        aDenominator = newValue.getDenominator();
+        aNumerator = newValue.getNumerator();
+        invalidate();
+    }
 }
